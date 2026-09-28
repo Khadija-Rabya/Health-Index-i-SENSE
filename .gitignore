@@ -91,10 +91,9 @@ investigation_*.md
 plan_*.md
 Questions_*.md
 
-# Donnees exportees et photos d'equipement
+# Donnees exportees (les visuels de public/machines/ sont publies : illustration
+# 3D generique du produit i-SENSE et schema de principe, sans photo du site)
 dashboard/frontend/public/data/
-dashboard/frontend/public/machines/*.png
-dashboard/frontend/public/machines/*.jpg
 
 # Resultats d'analyse et d'entrainement
 catboost_info/
