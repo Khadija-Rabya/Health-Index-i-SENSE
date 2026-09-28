@@ -1,0 +1,15 @@
+# Dependances du backend deploye (Python 3.12).
+# Versions FIGEES sur celles qui ont entraine les modeles : un modele
+# scikit-learn / LightGBM serialise par joblib ne se recharge de facon fiable
+# qu'avec les memes versions.
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+pandas==3.0.5
+numpy==2.5.1
+scikit-learn==1.9.0
+lightgbm==4.7.0
+scipy==1.18.0
+joblib==1.5.3
+pyarrow==25.0.1
+matplotlib==3.11.1
+requests==2.34.2

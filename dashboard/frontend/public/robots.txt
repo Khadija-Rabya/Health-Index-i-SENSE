@@ -1,0 +1,4 @@
+# Tableau de bord interne — donnees d'exploitation confidentielles.
+# Aucune indexation, aucune exploration, par aucun robot.
+User-agent: *
+Disallow: /

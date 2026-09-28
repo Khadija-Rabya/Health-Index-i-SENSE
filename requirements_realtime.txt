@@ -1,0 +1,5 @@
+# Dependances du dashboard temps reel (realtime/) - en plus de celles deja utilisees
+# ailleurs dans le projet (pandas, numpy, scikit-learn, requests, joblib, xgboost).
+streamlit
+streamlit-autorefresh
+plotly

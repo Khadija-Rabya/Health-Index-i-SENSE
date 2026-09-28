@@ -1,0 +1,56 @@
+{
+  "Motosoufflante A": {
+    "methode": "sous-indices monotones (vibration à sens unique, pression bilatérale), agrégés par le maillon faible",
+    "s_alarme": 2.0,
+    "n_sain_entrainement": 14433,
+    "n_evalue": 18562,
+    "vibration": {
+      "echelle": "log",
+      "reference": 0.14033371830659677,
+      "p95": 0.76,
+      "seuil_alarme": 4.115903198246891,
+      "degenere": false,
+      "pct_impute": 0.5895377653270122
+    },
+    "pression": {
+      "echelle": "écart absolu",
+      "cible_bar": 5.4,
+      "reference": 0.1999999999999993,
+      "p95": 1.0999999999999996,
+      "seuil_alarme": 2.0,
+      "degenere": false
+    },
+    "controle": {
+      "taux_alarme_population_saine": 0.002355712603062426,
+      "pilote_vibration": 0.41353302445857126,
+      "pilote_pression": 0.2570304924038358
+    }
+  },
+  "Motosoufflante B": {
+    "methode": "sous-indices monotones (vibration à sens unique, pression bilatérale), agrégés par le maillon faible",
+    "s_alarme": 2.0,
+    "n_sain_entrainement": 2204,
+    "n_evalue": 2204,
+    "vibration": {
+      "echelle": "log",
+      "reference": 0.32309557606289796,
+      "p95": 0.506927582037613,
+      "seuil_alarme": 0.7953546642819854,
+      "degenere": false,
+      "pct_impute": 0.9990925589836661
+    },
+    "pression": {
+      "echelle": "écart absolu",
+      "cible_bar": 4.4,
+      "reference": 0.09999999999999964,
+      "p95": 0.6000000000000005,
+      "seuil_alarme": 1.1000000000000014,
+      "degenere": false
+    },
+    "controle": {
+      "taux_alarme_population_saine": 0.014972776769509982,
+      "pilote_vibration": 0.43693284936479126,
+      "pilote_pression": 0.2881125226860254
+    }
+  }
+}

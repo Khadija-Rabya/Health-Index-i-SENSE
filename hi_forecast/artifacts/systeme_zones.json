@@ -1,0 +1,26 @@
+{
+  "zones": [
+    {
+      "machine": "Motosoufflante A",
+      "n_evalue": 18562,
+      "zone_A": 15991,
+      "zone_B": 2531,
+      "zone_C": 31,
+      "zone_D": 9,
+      "HI_median": 0.9258747122872903,
+      "HI_p05": 0.6546922875874865
+    },
+    {
+      "machine": "Motosoufflante B",
+      "n_evalue": 2204,
+      "zone_A": 1856,
+      "zone_B": 315,
+      "zone_C": 0,
+      "zone_D": 33,
+      "HI_median": 0.960999191861062,
+      "HI_p05": 0.6969583327938409
+    }
+  ],
+  "correlation_huile_systeme": 0.3817894644281515,
+  "n_lignes_comparees": 20766
+}

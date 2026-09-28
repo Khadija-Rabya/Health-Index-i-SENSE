@@ -1,0 +1,93 @@
+[
+  {
+    "horizon": 1,
+    "horizon_label": "10 min",
+    "machine": "Motosoufflante A",
+    "evaluable": true,
+    "famille": "lasso_porte",
+    "cv_acc": 0.45445658953226087,
+    "test_acc": 0.3155781584582441,
+    "acc_persist": 0.4138115631691649,
+    "skill": 0.04230351194338011,
+    "r2": 0.4651645987866786,
+    "rmse": 0.04858524627114946,
+    "mae": 0.03268361966888938,
+    "n_train": 14673,
+    "n_test": 3736
+  },
+  {
+    "horizon": 1,
+    "horizon_label": "10 min",
+    "machine": "Motosoufflante B",
+    "evaluable": false,
+    "n_train": 2155,
+    "n_test": 0,
+    "motif": "aucune ligne en marche dans la fenetre de test"
+  },
+  {
+    "horizon": 2,
+    "horizon_label": "20 min",
+    "machine": "Motosoufflante A",
+    "evaluable": true,
+    "famille": "lasso_porte",
+    "cv_acc": 0.46508187805421947,
+    "test_acc": 0.30081521739130435,
+    "acc_persist": 0.38614130434782606,
+    "skill": 0.06993438826340159,
+    "r2": 0.38540659174543623,
+    "rmse": 0.05188201851934679,
+    "mae": 0.03545752124424857,
+    "n_train": 14633,
+    "n_test": 3680
+  },
+  {
+    "horizon": 2,
+    "horizon_label": "20 min",
+    "machine": "Motosoufflante B",
+    "evaluable": false,
+    "n_train": 2122,
+    "n_test": 0,
+    "motif": "aucune ligne en marche dans la fenetre de test"
+  },
+  {
+    "horizon": 18,
+    "horizon_label": "3 h",
+    "machine": "Motosoufflante A",
+    "evaluable": true,
+    "famille": "lasso_porte",
+    "cv_acc": 0.4517699411280992,
+    "test_acc": 0.1683366733466934,
+    "acc_persist": 0.27769825365015743,
+    "skill": 0.18364197584692288,
+    "r2": -0.15886839923774065,
+    "rmse": 0.07014502128586855,
+    "mae": 0.0522627641844267,
+    "n_train": 14067,
+    "n_test": 3493
+  },
+  {
+    "horizon": 18,
+    "horizon_label": "3 h",
+    "machine": "Motosoufflante B",
+    "evaluable": false,
+    "n_train": 1635,
+    "n_test": 0,
+    "motif": "aucune ligne en marche dans la fenetre de test"
+  },
+  {
+    "horizon": 144,
+    "horizon_label": "24 h",
+    "machine": "Motosoufflante A",
+    "evaluable": true,
+    "famille": "lasso_porte",
+    "cv_acc": 0.5294056308654849,
+    "test_acc": 0.12226217718208565,
+    "acc_persist": 0.2595619483491337,
+    "skill": -0.33939395245162096,
+    "r2": -0.5564578039816248,
+    "rmse": 0.08224458277125006,
+    "mae": 0.06338611920946442,
+    "n_train": 11508,
+    "n_test": 3059
+  }
+]

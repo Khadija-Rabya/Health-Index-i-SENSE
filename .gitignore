@@ -1,0 +1,118 @@
+# ─────────────────────────────────────────────────────────────
+#  DONNEES — exclues du depot (401 Mo, fichiers jusqu'a 71 Mo)
+#  GitHub refuse les fichiers > 100 Mo et deconseille les gros depots.
+#  Les donnees restent en local ; le depot ne contient que le code.
+# ─────────────────────────────────────────────────────────────
+*.csv
+*.xlsx
+*.xls
+*.parquet
+
+# ...sauf les tableaux de resultats, petits et utiles a la lecture
+!hi_forecast/*_resultats.csv
+!hi_forecast/tableau_unifie_*.csv
+!hi_forecast/livrable*.csv
+!hi_forecast/leaderboard_familles.csv
+!hi_forecast/separe_par_machine_complet.csv
+!hi_forecast/comparaison_finale_complete.csv
+!hi_forecast/meilleur_par_machine.csv
+!hi_forecast/par_machine_resultats.csv
+!hi_forecast/multi_horizon_metriques.csv
+!hi_forecast/sweep_*.csv
+!hi_forecast/classements_importance.csv
+!hi_forecast/importance_shap_final.csv
+!hi_forecast/results_log.csv
+!hi_forecast/ae_faisabilite_fenetres.csv
+!hi_forecast/alerte*.csv
+!hi_forecast/verif_*.csv
+
+# ─────────────────────────────────────────────────────────────
+#  PYTHON
+# ─────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+isense_venv/
+.ipynb_checkpoints/
+
+# caches de calcul intermediaires
+hi_forecast/cache/
+eda_output/
+
+# ─────────────────────────────────────────────────────────────
+#  NODE / FRONTEND
+# ─────────────────────────────────────────────────────────────
+node_modules/
+dashboard/frontend/dist/
+dashboard/frontend/.vite/
+*.log
+.vercel/
+
+# ─────────────────────────────────────────────────────────────
+#  BACKEND — journaux et artefacts d'execution
+# ─────────────────────────────────────────────────────────────
+dashboard/backend/uvicorn.*.log
+dashboard/backend/boot.*.log
+
+# ─────────────────────────────────────────────────────────────
+#  SYSTEME
+# ─────────────────────────────────────────────────────────────
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*.docx
+~$*.xlsx
+~WRL*.tmp
+*.tmp
+
+# ============================================================================
+#  DEPOT PUBLIC : code uniquement. Aucune donnee d'exploitation OCP, aucun
+#  rapport, aucun secret. (Regles placees en fin de fichier : elles priment.)
+# ============================================================================
+# Secrets
+.env
+.env.*
+!.env.example
+!dashboard/backend/.env.example
+!dashboard/frontend/.env.example
+.claude/
+
+# Rapports et documents (mesures reelles, figures, tableaux de resultats)
+*.docx
+*.pdf
+*.zip
+rapport_latex/
+rapport_word/
+rapport_*.md
+explication_*.md
+investigation_*.md
+plan_*.md
+Questions_*.md
+
+# Donnees exportees et photos d'equipement
+dashboard/frontend/public/data/
+dashboard/frontend/public/machines/*.png
+dashboard/frontend/public/machines/*.jpg
+
+# Resultats d'analyse et d'entrainement
+catboost_info/
+realtime/artifacts/
+hi_forecast/figures/
+hi_forecast/*.md
+hi_forecast/*.csv
+hi_forecast/*.json
+!hi_forecast/importance_shap_final.csv
+
+# Modeles : seuls ceux qu'utilise le serveur (parametres ajustes, sans mesure brute)
+hi_forecast/artifacts/*
+!hi_forecast/artifacts/pretraitement.joblib
+!hi_forecast/artifacts/modeles_multi_horizon.joblib
+!hi_forecast/artifacts/multi_horizon_metriques.json
+!hi_forecast/artifacts/modeles_systeme_multi_horizon.joblib
+!hi_forecast/artifacts/systeme_metriques.json
+!hi_forecast/artifacts/systeme_calibrage.json
+!hi_forecast/artifacts/systeme_leaderboard.json
+!hi_forecast/artifacts/systeme_zones.json
+!hi_forecast/artifacts/systeme_seuils_stats.json

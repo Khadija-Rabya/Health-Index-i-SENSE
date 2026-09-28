@@ -1,0 +1,23 @@
+EMPLACEMENT DES IMAGES DE MACHINES
+==================================
+
+Depose ici les photos, nommees exactement :
+
+    motosoufflante-a.jpg        (ou .png, .jpeg, .webp, .svg)
+    motosoufflante-b.jpg        (ou .png, .jpeg, .webp, .svg)
+
+Elles apparaissent automatiquement dans la carte de chaque machine du tableau
+de bord. Aucun code a modifier : le nom de fichier est derive du nom de la
+machine (minuscules, accents retires, espaces remplaces par des tirets).
+
+Les extensions sont essayees dans l'ordre jpg, jpeg, png, webp, svg. Tant
+qu'aucun fichier n'est trouve, le tableau de bord affiche un repere en
+pointilles qui rappelle le chemin attendu.
+
+Format conseille : image carree, 300x300 px minimum. Elle est recadree en carre
+(object-fit: cover) et affichee en 62x62 px dans la carte.
+
+IMPORTANT : apres avoir depose les fichiers, reconstruire le site
+    cd dashboard/frontend
+    npm run build
+Les fichiers de public/ ne sont copies dans dist/ qu'a la construction.

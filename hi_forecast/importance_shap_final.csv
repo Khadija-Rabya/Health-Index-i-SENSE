@@ -1,0 +1,21 @@
+﻿feature,mean_abs_shap
+Oil System Vibration_filled_zscore_lf,0.001307983118684137
+health_index_lf,0.0012052652999610097
+HI_isoforest_lf,0.0007642473599191811
+time_in_session_h,0.000761509918301297
+Oil System Vibration_filled_diff1,0.0006426636829118087
+hour_sin,0.000576485279290442
+Oil System Vibration,0.0004941809103426319
+Oil System Vibration_filled,0.0004449155979840438
+HI_pca_spe_lf,0.00041482736741556877
+Oil Conductivity_nSm_filled_ewma,0.000375861204302509
+Oil Pressure,0.0002993042710262846
+vibration_gap_distance,0.000261134514818817
+ISO 4_filled_ewma,0.0002514932862342918
+contamination_index,0.0002265273395447833
+Oil System Vibration_filled_ewma,0.00021479195428771605
+day_of_week,0.0002109034050450869
+hour_cos,0.00019488410773265904
+Oil H2O Saturation_filled,0.0001767106013104204
+ISO 6_ewma,0.0001348713739317601
+Oil H2O ppm_filled,0.00012636249293783306

@@ -1,0 +1,44 @@
+# Blueprint Render : backend FastAPI du tableau de bord Health Index i-SENSE.
+# Render -> New -> Blueprint -> ce depot. Les variables marquees `sync: false`
+# sont SECRETES : Render les demande a la creation, elles ne sont jamais dans
+# le depot.
+services:
+  - type: web
+    name: health-index-isense-api
+    runtime: python
+    plan: free
+    rootDir: .
+    buildCommand: pip install -r dashboard/backend/requirements.txt
+    startCommand: cd dashboard/backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      # --- API i-SENSE ---
+      - key: ISENSE_LIVE
+        value: "1"
+      - key: ISENSE_API_URL
+        value: https://v3back-demo.i-sense.io/api/i-sense-v3
+      - key: ISENSE_EMAIL
+        sync: false
+      - key: ISENSE_PASSWORD
+        sync: false
+      - key: ISENSE_JOURS_AMORCE
+        value: "3"
+      # --- compte de connexion au tableau de bord ---
+      - key: DASHBOARD_USER
+        sync: false
+      - key: DASHBOARD_PASSWORD
+        sync: false
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: AUTH_TTL_H
+        value: "12"
+      # --- serveur ---
+      - key: PERIODE_CALCUL_S
+        value: "600"
+      # Adresse du frontend Vercel, ex. https://health-index-isense.vercel.app
+      - key: CORS_ORIGINS
+        sync: false
+      - key: DASHBOARD_URL
+        sync: false
