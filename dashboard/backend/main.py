@@ -158,6 +158,11 @@ def _maintenant():
 
 FEED = None
 FLUX: FluxIncremental | None = None
+# Verrou de CREATION de la source. Sans lui, le planificateur et la premiere
+# requete arrivee au demarrage creaient chacun leur connecteur : le
+# planificateur rafraichissait le sien, les calculs lisaient l'autre, fige sur
+# le premier releve — l'ecran ne suivait plus i-SENSE (constate le 28/09).
+_FEED_LOCK = threading.Lock()
 
 
 def flux() -> FluxIncremental:
@@ -192,6 +197,16 @@ def feed():
     """Source des lignes. `ReplayFeed` et `LiveFeed` exposent la meme interface :
     window(n) renvoie « les lignes dont on dispose maintenant ». Aucun etage en
     aval ne sait laquelle des deux tourne."""
+    global FEED
+    if FEED is not None:
+        return FEED
+    with _FEED_LOCK:
+        if FEED is not None:              # cree par un autre fil entre-temps
+            return FEED
+        return _creer_feed()
+
+
+def _creer_feed():
     global FEED
     if FEED is None and MODE_LIVE:
         from live_feed import LiveFeed
@@ -275,7 +290,7 @@ def calculer() -> None:
 
 
 def _planificateur() -> None:
-    f = feed()                                   # amorce + premier releve
+    feed()                                       # amorce + premier releve
     while not _ARRET.is_set():
         try:
             calculer()
@@ -286,7 +301,9 @@ def _planificateur() -> None:
         if _ARRET.wait(PERIODE_CALCUL_S):
             break
         if MODE_LIVE:
-            f.tick()                             # releve, puis calcul au tour suivant
+            # feed() et non une reference gardee : toujours LA source partagee,
+            # celle que lisent les calculs et les routes.
+            feed().tick()                        # releve, puis calcul au tour suivant
 
 
 @app.on_event("startup")
