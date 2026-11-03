@@ -77,14 +77,27 @@ async def exiger_connexion(request: Request, call_next):
     jeton = entete[7:] if entete.lower().startswith("bearer ") else None
     if not auth.jeton_valide(jeton):
         return JSONResponse({"detail": "connexion requise"}, status_code=401)
-    return await call_next(request)
+    try:
+        return await call_next(request)
+    except Exception as e:
+        # Une erreur levee plus bas remonterait jusqu'au serveur, HORS du CORS :
+        # le navigateur masquerait alors la reponse et l'ecran n'afficherait que
+        # « Failed to fetch ». On la renvoie ici, a l'interieur du CORS, avec son
+        # message, pour qu'elle soit lisible sur le tableau de bord.
+        print(f"[erreur] {request.url.path} : {type(e).__name__}: {e}", file=sys.stderr)
+        return JSONResponse({"detail": f"erreur serveur : {type(e).__name__}: {e}"},
+                            status_code=500)
 
 
 # CORS_ORIGINS : adresses du frontend autorisees, separees par des virgules
 # (ex. https://mon-dashboard.vercel.app). « * » par defaut, pour le local.
 _ORIGINES = [o.strip() for o in os.environ.get("CORS_ORIGINS", "*").split(",") if o.strip()]
-app.add_middleware(CORSMiddleware, allow_origins=_ORIGINES, allow_methods=["*"],
-                   allow_headers=["*"])
+# CORS_ORIGIN_REGEX : motif d'origines autorisees en plus, par exemple toutes les
+# adresses Vercel du projet (production ET previsualisations, qui changent a
+# chaque deploiement) : ^https://health-index-i-sense.*\.vercel\.app$
+_MOTIF = os.environ.get("CORS_ORIGIN_REGEX") or None
+app.add_middleware(CORSMiddleware, allow_origins=_ORIGINES, allow_origin_regex=_MOTIF,
+                   allow_methods=["*"], allow_headers=["*"])
 
 
 @app.post("/auth/login")

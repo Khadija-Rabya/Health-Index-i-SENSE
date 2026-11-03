@@ -158,6 +158,16 @@ export const session = {
   effacer: () => { try { localStorage.removeItem(CLE_JETON); } catch { /* idem */ } },
 };
 
+/** Message lisible d'une reponse en erreur : le `detail` renvoye par le backend
+ *  quand il existe, sinon le code HTTP. */
+async function messageErreur(r: Response, route: string): Promise<string> {
+  try {
+    const d = await r.json();
+    if (d && typeof d.detail === "string") return `${route} : ${d.detail}`;
+  } catch { /* corps non JSON */ }
+  return `${route} → ${r.status}`;
+}
+
 function entetes(): Record<string, string> {
   const j = session.jeton();
   return j ? { Authorization: `Bearer ${j}` } : {};
@@ -166,7 +176,7 @@ function entetes(): Record<string, string> {
 async function json<T>(url: string): Promise<T> {
   const r = await fetch(url, { headers: MODE === "live" ? entetes() : {} });
   if (r.status === 401) { session.effacer(); throw new ConnexionRequise(); }
-  if (!r.ok) throw new Error(`${url} → ${r.status}`);
+  if (!r.ok) throw new Error(await messageErreur(r, url.replace(BASE, "")));
   return r.json();
 }
 
@@ -205,7 +215,7 @@ export const api = {
     if (MODE === "live") {
       const r = await fetch(`${BASE}/predict`, { method: "POST", headers: entetes() });
       if (r.status === 401) { session.effacer(); throw new ConnexionRequise(); }
-      if (!r.ok) throw new Error(`/predict → ${r.status}`);
+      if (!r.ok) throw new Error(await messageErreur(r, "/predict"));
       return r.json();
     }
     await ensureStatic();

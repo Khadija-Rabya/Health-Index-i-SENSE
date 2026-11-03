@@ -40,5 +40,8 @@ services:
       # Adresse du frontend Vercel, ex. https://health-index-isense.vercel.app
       - key: CORS_ORIGINS
         sync: false
+      # Toutes les adresses Vercel du projet, previsualisations comprises
+      - key: CORS_ORIGIN_REGEX
+        value: ^https://health-index-i-sense[a-z0-9-]*\.vercel\.app$
       - key: DASHBOARD_URL
         sync: false
